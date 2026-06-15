@@ -1,32 +1,29 @@
 pipeline {
-agent any
+    agent any
 
-```
-stages {
+    stages {
 
-    stage('Build') {
-        steps {
-            bat 'echo Building Application'
+        stage('Build') {
+            steps {
+                bat 'echo Building Application'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                bat 'echo Running Tests'
+                bat 'echo All Tests Passed'
+            }
         }
     }
 
-    stage('Test') {
-        steps {
-            bat 'echo Running Tests'
-            bat 'echo All Tests Passed'
+    post {
+        success {
+            echo 'Build Successful'
+        }
+
+        failure {
+            echo 'Build Failed'
         }
     }
-}
-
-post {
-    success {
-        echo 'Build Successful'
-    }
-
-    failure {
-        echo 'Build Failed'
-    }
-}
-```
-
 }
