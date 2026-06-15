@@ -2,29 +2,16 @@ pipeline {
     agent any
 
     stages {
-
         stage('Build') {
             steps {
-                echo 'Building Application'
-                bat 'python app.py'
+                bat '"C:\\Users\\Sairaj\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" app.py'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Testing Application'
-                bat 'python test.py'
+                bat '"C:\\Users\\Sairaj\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" test.py'
             }
-        }
-    }
-
-    post {
-        success {
-            echo 'Build and Test Successful'
-        }
-
-        failure {
-            echo 'Build Failed'
         }
     }
 }
